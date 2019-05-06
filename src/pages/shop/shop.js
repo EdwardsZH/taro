@@ -4,7 +4,7 @@ import { connect } from '@tarojs/redux'
 
 import { add, minus, asyncAdd } from '../../store/modules/counter'
 
-import './index.less'
+import './shop.less'
 
 
 @connect(({ counter }) => ({
@@ -23,7 +23,7 @@ import './index.less'
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '首页-shop'
   }
 
   componentWillReceiveProps (nextProps) {
@@ -38,7 +38,7 @@ class Index extends Component {
 
   go () {
     Taro.redirectTo({
-      url: '/pages/shop/shop'
+      url: '/pages/index/index'
     })
   }
 
@@ -50,7 +50,7 @@ class Index extends Component {
         <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
         <Button className='dec_btn' onClick={this.go}>go</Button>
         <View><Text>{this.props.counter.num}</Text></View>
-        <View><Text>Hello, World</Text></View>
+        <View><Text>Hello, World-shop</Text></View>
       </View>
     )
   }
