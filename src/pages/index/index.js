@@ -1,9 +1,10 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
-
 import { add, minus, asyncAdd } from '../../store/modules/counter'
-
+import AppImage from '../../components/AppImage.jsx'
+import account from '../../assets/images/account.png'
+import { apiPost } from '../../common/api'
 import './index.less'
 
 
@@ -20,6 +21,7 @@ import './index.less'
     dispatch(asyncAdd())
   }
 }))
+
 class Index extends Component {
 
   config = {
@@ -28,15 +30,18 @@ class Index extends Component {
 
   componentWillReceiveProps (nextProps) {
     // console.log(this.props, nextProps)
+    const proEnv = window.location.href;
+    console.log(proEnv)
   }
-
+  
   componentWillUnmount () { }
-
+  
   componentDidShow () { }
-
+  
   componentDidHide () { }
-
+  
   go () {
+    apiPost();
     Taro.redirectTo({
       url: '/pages/shop/shop'
     })
@@ -45,6 +50,7 @@ class Index extends Component {
   render () {
     return (
       <View className='index'>
+        <AppImage url={account} />
         <Button className='add_btn' onClick={this.props.add}>+</Button>
         <Button className='dec_btn' onClick={this.props.dec}>-</Button>
         <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
